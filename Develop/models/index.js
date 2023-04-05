@@ -15,22 +15,23 @@ Category.hasMany(Product, {
 });
 
 // Products belongToMany Tags (through ProductTag)
-Product.belgonsToMany(Tag, {
+Product.belongsToMany(Tag, {
   //Define the third table needed to store the foreign keys
   through: {
     model: ProductTag,
-    unique: false //this can have many of the same tags//
+    unique: false 
   },
   //define an alias for when data is retrieved
-  as: 'product_tag'
+  as: 'product_tags'
 });
 
 // Tags belongToMany Products (through ProductTag)
-Tag.belgonsToMany(Product, {
+Tag.belongsToMany(Product, {
   through: {
     model: ProductTag,
     unique: false
   },
+  as: 'tag_product_test'
 });
 
 module.exports = {
